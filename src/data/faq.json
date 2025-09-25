@@ -1,0 +1,26 @@
+[
+  {
+    "question": "What is Juno?",
+    "answer": "Juno is a dedicated platform designed for college students to discover and apply for open positions within various campus clubs. It helps clubs post their opportunities and manage applications, while providing students with an easy way to explore, apply, and connect with their college community."
+  },
+  {
+    "question": "How do clubs post an opening?",
+    "answer": "As a club representative, you can post an opening by navigating to the 'Create Opening' section after logging in. Fill in the details about the position and your club, then submit the form to create a new listing."
+  },
+  {
+    "question": "How can students search for club openings?",
+    "answer": "Students can search for club openings by keywords, club category, skills required, or other filters using the search bar on the homepage or the dedicated 'Opportunities' page."
+  },
+  {
+    "question": "How do I apply for a club position?",
+    "answer": "To apply for a club position, click on the opening listing and follow the application instructions provided. You may need to upload a resume, cover letter, or provide additional information as requested by the club."
+  },
+  {
+    "question": "Can I save club openings to apply later?",
+    "answer": "Yes, you can save club openings by clicking the 'Save Opportunity' button on the listing. Saved opportunities can be accessed from your profile under the 'Saved Opportunities' section."
+  },
+  {
+    "question": "How do I track my club applications?",
+    "answer": "Students can track the status of their applications from the 'My Applications' section in their profile. This section provides updates on the progress of each application, from submitted to accepted or declined."
+  }
+]

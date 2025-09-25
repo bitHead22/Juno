@@ -1,0 +1,22 @@
+[
+  {
+    "name": "amazon",
+    "path": "/clubs/amazon.svg",
+    "id": 1
+  },
+  {
+    "name": "google",
+    "path": "/clubs/google.webp",
+    "id": 2
+  },
+   {
+    "name": "meta",
+    "path": "/clubs/meta.svg",
+    "id": 3
+  },
+  {
+    "name": "microsoft",
+    "path": "/clubs/microsoft.webp",
+    "id": 4
+  }
+]
