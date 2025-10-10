@@ -40,7 +40,7 @@ export async function saveOpening(token, { alreadySaved }, saveData) {
       .eq("opening_id", saveData.opening_id);
 
     if (deleteError) {
-      console.error("Error removing saved job:", deleteError);
+      console.error("Error removing saved Opening:", deleteError);
       return data;
     }
 
@@ -53,11 +53,50 @@ export async function saveOpening(token, { alreadySaved }, saveData) {
       .select();
 
     if (insertError) {
-      console.error("Error saving job:", insertError);
+      console.error("Error saving Openings:", insertError);
       return data;
     }
 
     return data;
   }
 }
+
+// Read single Opening
+export async function getSingleOpening(token, { opening_id }) {
+  const supabase = await supabaseClient(token);
+  let query = supabase
+    .from("openings")
+    .select(
+      "*, club: clubs(name,logo_url), applications: applications(*)"
+    )
+    .eq("id", opening_id)
+    .single();
+
+  const { data, error } = await query;
+
+  if (error) {
+    console.error("Error fetching Openings:", error);
+    return null;
+  }
+
+  return data;
+}
+
+// - opening isOpen toggle - (recruiter_id = auth.uid())
+export async function updateHiringStatus(token, { opening_id }, isOpen) {
+  const supabase = await supabaseClient(token);
+  const { data, error } = await supabase
+    .from("openings")
+    .update({ isOpen })
+    .eq("id", opening_id)
+    .select();
+
+  if (error) {
+    console.error("Error Updating Hiring Status:", error);
+    return null;
+  }
+
+  return data;
+}
+
 
