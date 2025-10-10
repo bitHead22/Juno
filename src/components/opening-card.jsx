@@ -43,7 +43,7 @@ const OpeningCard = ({
   }, [savedOpening]);
 
   return (
-    <Card>
+    <Card className="flex flex-col">
       <CardHeader>
         <CardTitle className="flex justify-between font-bold">
           {opening.title}

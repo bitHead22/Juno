@@ -1,6 +1,6 @@
-import supabaseClient, { supabaseUrl } from "@/utils/supabase";
+import supabaseClient from "@/utils/supabase";
 
-// Fetch Companies
+// Fetch Clubs
 export async function getClubs(token) {
   const supabase = await supabaseClient(token);
   const { data, error } = await supabase.from("clubs").select("*");

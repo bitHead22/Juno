@@ -1,10 +1,20 @@
+import { getClubs } from "@/api/apiClubs";
 import { getOpenings } from "@/api/apiOpenings";
 import OpeningCard from "@/components/opening-card";
 import useFetch from "@/hooks/use-fetch";
 import { useUser } from "@clerk/clerk-react";
 import React, { useEffect, useState } from "react";
 import { BarLoader } from "react-spinners";
-
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 const OpeningsList = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [location, setLocation] = useState("");
@@ -22,9 +32,34 @@ const OpeningsList = () => {
     searchQuery,
   });
 
+    const {
+    // loading: loadingCompanies,
+    data: clubs,
+    fn: fnClubs,
+  } = useFetch(getClubs);
+
+    useEffect(() => {
+    if (isLoaded) {
+      fnClubs();
+    }
+  }, [isLoaded]);
+
   useEffect(() => {
     if (isLoaded) fnOpenings();
   }, [isLoaded, location, club_id, searchQuery]);
+
+const handleSearch = (e) => {
+    e.preventDefault();
+    let formData = new FormData(e.target);
+
+    const query = formData.get("search-query");
+    if (query) setSearchQuery(query);
+  };
+
+    const clearFilters = () => {
+    setSearchQuery("");
+    setClub_id("");
+  };
 
   if (!isLoaded) {
     return <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />;
@@ -37,6 +72,50 @@ const OpeningsList = () => {
       </h1>
 
       {/*Add filters*/}
+
+      <form
+        onSubmit={handleSearch}
+        className="h-14 flex flex-row w-full gap-2 items-center mb-3"
+      >
+        <Input
+          type="text"
+          placeholder="Search Openings by Title.."
+          name="search-query"
+          className="h-full flex-1  px-4 text-md"
+        />
+        <Button type="submit" className="h-full sm:w-28" variant="blue">
+          Search
+        </Button>
+      </form>
+
+        <div className="flex flex-col sm:flex-row gap-2">
+        <Select
+          value={club_id}
+          onValueChange={(value) => setClub_id(value)}
+        >
+          <SelectTrigger>
+            <SelectValue placeholder="Filter by Club" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              {clubs?.map(({ name, id }) => {
+                return (
+                  <SelectItem key={name} value={id}>
+                    {name}
+                  </SelectItem>
+                );
+              })}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+        <Button
+          className="sm:w-1/2"
+          variant="destructive"
+          onClick={clearFilters}
+        >
+          Clear Filters
+        </Button>
+      </div>
 
       {loadingOpenings && (
         <BarLoader className="mt-4" width={"100%"} color="#36d7b7" />
