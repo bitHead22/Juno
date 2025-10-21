@@ -15,6 +15,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ApplyOpeningDrawer } from "@/components/apply-opening";
+import {ApplicationCard} from "@/components/application-card";
 const OpeningDetails = () => {
   const { isLoaded, user } = useUser();
   const { id } = useParams();
@@ -121,6 +122,18 @@ const OpeningDetails = () => {
           fetchOpening={fnOpening}
           applied={opening?.applications?.find((ap) => ap.candidate_id === user.id)}
         />
+      )}
+
+      {loadingHiringStatus && <BarLoader width={"100%"} color="#36d7b7" />}
+      {opening?.applications?.length > 0 && opening?.recruiter_id === user?.id && (
+        <div className="flex flex-col gap-2">
+          <h2 className="font-bold mb-4 text-xl ml-1">Applications</h2>
+          {opening?.applications.map((application) => {
+            return (
+              <ApplicationCard key={application.id} application={application} />
+            );
+          })}
+        </div>
       )}
     </div>
   );

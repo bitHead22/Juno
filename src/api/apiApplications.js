@@ -32,3 +32,20 @@ export async function applyToOpening(token, _, openingData) {
 
   return data;
 }
+
+// - Edit Application Status ( recruiter )
+export async function updateApplicationStatus(token, { opening_id }, status) {
+  const supabase = await supabaseClient(token);
+  const { data, error } = await supabase
+    .from("applications")
+    .update({ status })
+    .eq("opening_id", opening_id)
+    .select();
+
+  if (error || data.length === 0) {
+    console.error("Error Updating Application Status:", error);
+    return null;
+  }
+
+  return data;
+}
