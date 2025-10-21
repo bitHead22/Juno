@@ -99,4 +99,21 @@ export async function updateHiringStatus(token, { opening_id }, isOpen) {
   return data;
 }
 
+// - post opening
+export async function addNewOpening(token, _, openingData) {
+  const supabase = await supabaseClient(token);
+
+  const { data, error } = await supabase
+    .from("openings")
+    .insert([openingData])
+    .select();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Error Creating Opening");
+  }
+
+  return data;
+}
+
 
