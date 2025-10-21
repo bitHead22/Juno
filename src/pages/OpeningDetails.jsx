@@ -14,6 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { ApplyOpeningDrawer } from "@/components/apply-opening";
 const OpeningDetails = () => {
   const { isLoaded, user } = useUser();
   const { id } = useParams();
@@ -113,6 +114,14 @@ const OpeningDetails = () => {
       />
 
       {/*render applications */}
+      {opening?.recruiter_id !== user?.id && (
+        <ApplyOpeningDrawer
+          opening={opening}
+          user={user}
+          fetchOpening={fnOpening}
+          applied={opening?.applications?.find((ap) => ap.candidate_id === user.id)}
+        />
+      )}
     </div>
   );
 };
