@@ -117,3 +117,17 @@ export async function addNewOpening(token, _, openingData) {
 }
 
 
+// Read Saved Openings
+export async function getSavedOpenings(token) {
+  const supabase = await supabaseClient(token);
+  const { data, error } = await supabase
+    .from("saved_openings")
+    .select("*, opening: openings(*, club: clubs(name,logo_url))");
+
+  if (error) {
+    console.error("Error fetching Saved Openings:", error);
+    return null;
+  }
+
+  return data;
+}
