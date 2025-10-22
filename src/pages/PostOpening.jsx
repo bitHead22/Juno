@@ -26,7 +26,7 @@ import { z } from "zod";
 const schema = z.object({
   title: z.string().min(1, { message: "Title is required" }),
   description: z.string().min(1, { message: "Description is required" }),
-  company_id: z.string().min(1, { message: "Select or Add a new Club" }),
+  club_id: z.string().min(1, { message: "Select or Add a new Club" }),
   requirements: z.string().min(1, { message: "Requirements are required" }),
 });
 
@@ -60,7 +60,7 @@ const PostOpening = () => {
   };
 
   useEffect(() => {
-    if (dataCreateOpening?.length > 0) navigate("/jobs");
+    if (dataCreateOpening?.length > 0) navigate("/openingList");
   }, [loadingCreateOpening]);
 
   const {

@@ -62,7 +62,7 @@ const AddClubDrawer = ({ fetchClubs }) => {
 
   return (
     <Drawer>
-      <DrawerTrigger>
+      <DrawerTrigger asChild>
         <Button type="button" size="sm" variant="secondary">
           Add Club
         </Button>
