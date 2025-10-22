@@ -131,3 +131,20 @@ export async function getSavedOpenings(token) {
 
   return data;
 }
+
+// get my created openings
+export async function getMyOpenings(token, { recruiter_id }) {
+  const supabase = await supabaseClient(token);
+
+  const { data, error } = await supabase
+    .from("openings")
+    .select("*, club: clubs(name,logo_url)")
+    .eq("recruiter_id", recruiter_id);
+
+  if (error) {
+    console.error("Error fetching Openings:", error);
+    return null;
+  }
+
+  return data;
+}

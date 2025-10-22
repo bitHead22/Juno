@@ -93,3 +93,5 @@ export const ApplicationCard = ({ application, isCandidate = false }) => {
     </Card>
   );
 };
+
+export default ApplicationCard;
