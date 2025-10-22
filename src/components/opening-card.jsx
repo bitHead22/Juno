@@ -10,9 +10,10 @@ import {
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { useUser } from "@clerk/clerk-react";
-import { saveOpening } from "@/api/apiOpenings";
+import { deleteOpening, saveOpening } from "@/api/apiOpenings";
 import { useState, useEffect } from "react";
 import useFetch from "@/hooks/use-fetch";
+import { BarLoader } from "react-spinners";
 const OpeningCard = ({
   opening,
   isMyOpening = false,
@@ -29,6 +30,10 @@ const OpeningCard = ({
   } = useFetch(saveOpening,
     {alreadySaved:saved,});
 
+    const { loading: loadingDeleteOpening, fn: fnDeleteOpening } = useFetch(deleteOpening, {
+    opening_id: opening.id,
+  });
+
 
     const handleSaveOpening = async () => {
     await fnSavedOpening({
@@ -38,13 +43,21 @@ const OpeningCard = ({
     onOpeningSaved();
   };
 
+    const handleDeleteOpening = async () => {
+    await fnDeleteOpening();
+    onOpeningSaved(); //will change the prop name later
+  };
+
     useEffect(() => {
     if (savedOpening !== undefined) setSaved(savedOpening?.length > 0);
   }, [savedOpening]);
 
   return (
     <Card className="flex flex-col">
-      <CardHeader>
+      {loadingDeleteOpening && (
+        <BarLoader className="mt-4" width={"100%"} color="#36d7b7" />
+      )}
+      <CardHeader className="Flex">
         <CardTitle className="flex justify-between font-bold">
           {opening.title}
                     {isMyOpening && (
@@ -52,6 +65,7 @@ const OpeningCard = ({
               fill="red"
               size={18}
               className="text-red-300 cursor-pointer"
+              onClick={handleDeleteOpening}
             />
           )}
         </CardTitle>

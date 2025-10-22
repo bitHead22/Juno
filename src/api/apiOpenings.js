@@ -148,3 +148,21 @@ export async function getMyOpenings(token, { recruiter_id }) {
 
   return data;
 }
+
+// Delete opening
+export async function deleteOpening(token, { opening_id }) {
+  const supabase = await supabaseClient(token);
+
+  const { data, error: deleteError } = await supabase
+    .from("openings")
+    .delete()
+    .eq("id", opening_id)
+    .select();
+
+  if (deleteError) {
+    console.error("Error deleting opening:", deleteError);
+    return data;
+  }
+
+  return data;
+}
