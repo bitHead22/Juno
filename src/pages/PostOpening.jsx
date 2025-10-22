@@ -80,7 +80,7 @@ const PostOpening = () => {
   }
 
   if (user?.unsafeMetadata?.role !== "recruiter") {
-    return <Navigate to="/jobs" />;
+    return <Navigate to="/openingList" />;
   }
 
   return (
