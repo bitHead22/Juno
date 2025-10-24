@@ -96,7 +96,7 @@ const handleSearch = (e) => {
           <SelectTrigger>
             <SelectValue placeholder="Filter by Club" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className="bg-slate-900 text-white border rounded-md shadow-md">
             <SelectGroup>
               {clubs?.map(({ name, id }) => {
                 return (
@@ -109,7 +109,7 @@ const handleSearch = (e) => {
           </SelectContent>
         </Select>
         <Button
-          className="sm:w-1/2"
+          className="sm:w-1/2 bg-red-500"
           variant="destructive"
           onClick={clearFilters}
         >

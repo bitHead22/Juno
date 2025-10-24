@@ -44,7 +44,7 @@ const SavedOpenings = () => {
               );
             })
           ) : (
-            <div>No Saved Openings 👀</div>
+            <div className="col-span-full flex items-center justify-center py-12 ">No Saved Openings 👀</div>
           )}
         </div>
       )}
