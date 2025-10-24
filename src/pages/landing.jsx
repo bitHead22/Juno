@@ -27,7 +27,7 @@ const LandingPage = () => {
             at
             <img
               src="/logo.png"
-              className="h-14 sm:h-24 lg:h-32"
+              className="h-24 sm:h-24 lg:h-48 sm:pt-10"
               alt="Juno Logo"
             />
           </span>
@@ -37,14 +37,14 @@ const LandingPage = () => {
           candidate.
         </p>
       </section>
-      <div className="flex gap-6 justify-center">
+      <div className="flex flex-wrap gap-3 sm:gap-6 justify-center">
         <Link to={"/openingList"}>
-          <Button variant="blue" size="xl">
+          <Button variant="blue" size="xl"  className="text-sm px-4 py-2 sm:text-base sm:px-6 sm:py-3 lg:text-lg lg:px-8 lg:py-4">
             Find Opening
           </Button>
         </Link>
         <Link to={"/postOpening"}>
-          <Button variant="destructive" size="xl">
+          <Button className="bg-red-500 text-sm px-4 py-2 sm:text-base sm:px-6 sm:py-3 lg:text-lg lg:px-8 lg:py-4" size="xl" >
             Post a Opening
           </Button>
         </Link>
@@ -57,13 +57,13 @@ const LandingPage = () => {
         ]}
         className="w-full py-10"
       >
-        <CarouselContent className="flex gap-5 sm:gap-20 items-center">
+        <CarouselContent className="flex gap-5 sm:gap-2 items-center">
           {clubs.map(({ name, id, path }) => (
             <CarouselItem key={id} className="basis-1/3 lg:basis-1/6 ">
               <img
                 src={path}
                 alt={name}
-                className="h-9 sm:h-14 object-contain"
+                className="h-12 sm:h-16 lg:h-20 object-contain"
               />
             </CarouselItem>
           ))}

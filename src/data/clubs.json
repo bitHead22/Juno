@@ -1,22 +1,42 @@
 [
   {
-    "name": "amazon",
-    "path": "/clubs/amazon.svg",
+    "name": "Sports club",
+    "path": "/clubs/sports-club.jpg",
     "id": 1
   },
   {
-    "name": "google",
-    "path": "/clubs/google.webp",
+    "name": "Iris",
+    "path": "/clubs/iris.jpg",
     "id": 2
   },
-   {
-    "name": "meta",
-    "path": "/clubs/meta.svg",
+  {
+    "name": "Ureckon",
+    "path": "/clubs/ureckon.svg",
     "id": 3
   },
   {
-    "name": "microsoft",
-    "path": "/clubs/microsoft.webp",
+    "name": "Ecstasia",
+    "path": "/clubs/ecstasia-logo.png",
     "id": 4
+  },
+  {
+    "name": "Innofusion",
+    "path": "/clubs/innofusion.webp",
+    "id": 5
+  },
+  {
+    "name": "Gfg",
+    "path": "/clubs/gfg.png",
+    "id": 6
+  },
+  {
+    "name": "Toastmasters",
+    "path": "/clubs/toastmasters.jpg",
+    "id": 7
+  },
+  {
+    "name": "Uemcon",
+    "path": "/clubs/uemcon.png",
+    "id": 8
   }
 ]

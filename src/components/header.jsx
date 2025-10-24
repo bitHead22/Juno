@@ -45,7 +45,7 @@ const Header = () => {
           <SignedIn>
             {user?.unsafeMetadata?.role === "recruiter" && (
               <Link to="/postOpening">
-                <Button variant="destructive" className="rounded-full">
+                <Button variant="outline" className="rounded-full text-sm px-3 py-1.5 sm:text-base sm:px-2 sm:py-2">
                   <PenBox size={20} className="mr-2" />
                   Post a Opening
                 </Button>
