@@ -1,4 +1,4 @@
-# <p align="center"><img src="logo.png" alt="Juno" width="300"/></p>
+# <p align="center"><img src="public/logo.png" alt="Juno" width="300"/></p>
 > **The seamless bridge between students and campus organizations.**
 
 ## 📖 About
